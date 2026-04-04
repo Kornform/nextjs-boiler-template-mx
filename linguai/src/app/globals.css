@@ -1,0 +1,268 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+
+/*
+  Direction: high-contrast editorial (Designity-adjacent):
+  void black + crisp white + cool grey + saturated orange.
+  Film grain on void & orange sections. Outfit display + DM Sans UI.
+*/
+
+@theme inline {
+  --font-sans: var(--font-dm-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-jetbrains-mono), ui-monospace, monospace;
+  --font-display: var(--font-outfit), ui-sans-serif, system-ui, sans-serif;
+  --font-family-display: var(--font-outfit), ui-sans-serif, system-ui, sans-serif;
+
+  --color-background:         var(--background);
+  --color-foreground:         var(--foreground);
+  --color-card:               var(--card);
+  --color-card-foreground:    var(--card-foreground);
+  --color-popover:            var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary:            var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary:          var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted:              var(--muted);
+  --color-muted-foreground:   var(--muted-foreground);
+  --color-accent:             var(--accent);
+  --color-accent-foreground:  var(--accent-foreground);
+  --color-destructive:              var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border:             var(--border);
+  --color-input:              var(--input);
+  --color-ring:               var(--ring);
+
+  --color-brand:              var(--brand);
+  --color-brand-foreground:   var(--brand-foreground);
+  --color-brand-muted:        var(--brand-muted);
+  --color-brand-border:       var(--brand-border);
+
+  --color-void:               var(--void);
+  --color-highlight:          var(--highlight);
+
+  --radius-xs:  calc(var(--radius) * 0.45);
+  --radius-sm:  calc(var(--radius) * 0.65);
+  --radius-md:  calc(var(--radius) * 0.85);
+  --radius-lg:  var(--radius);
+  --radius-xl:  calc(var(--radius) * 1.35);
+  --radius-2xl: calc(var(--radius) * 1.75);
+  --radius-3xl: calc(var(--radius) * 2.35);
+  --radius-full: 9999px;
+}
+
+:root {
+  --void: #0a0a0a;
+  --ink: #0a0a0a;
+
+  /* Cool grey page canvas */
+  --background:             #ececee;
+  --foreground:             var(--ink);
+  --card:                   #ffffff;
+  --card-foreground:        var(--ink);
+  --popover:                #ffffff;
+  --popover-foreground:     var(--ink);
+
+  /* Saturated orange — CTAs & breaks */
+  --primary:                #ff4d12;
+  --primary-foreground:     #ffffff;
+
+  --secondary:              #e4e4e8;
+  --secondary-foreground:   var(--ink);
+
+  --muted:                  #e4e4e8;
+  --muted-foreground:       #52525b;
+
+  --accent:                 #fff4f0;
+  --accent-foreground:      #9a3412;
+
+  --highlight:              #ff4d12;
+
+  --destructive:            #dc2626;
+  --destructive-foreground: #ffffff;
+
+  --border:                 #d4d4d8;
+  --input:                  #d4d4d8;
+  --ring:                   #ff4d12;
+
+  --radius:                 0.5rem;
+
+  --brand:                  var(--primary);
+  --brand-foreground:       #ffffff;
+  --brand-muted:            rgb(255 77 18 / 0.12);
+  --brand-border:           rgb(255 77 18 / 0.35);
+
+  --footer-bg:              var(--void);
+
+  /* Full-bleed orange band */
+  --band-orange:            #ff4d12;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+
+  html {
+    @apply font-sans;
+    font-size: 100%;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-size: 1rem;
+    line-height: 1.55;
+    min-height: 100dvh;
+  }
+}
+
+@keyframes hero-fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@layer utilities {
+  .animate-hero-up {
+    animation: hero-fade-up 0.85s cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+  .hero-delay-1 {
+    animation-delay: 0.04s;
+  }
+  .hero-delay-2 {
+    animation-delay: 0.1s;
+  }
+  .hero-delay-3 {
+    animation-delay: 0.16s;
+  }
+  .hero-delay-4 {
+    animation-delay: 0.22s;
+  }
+  .hero-delay-5 {
+    animation-delay: 0.28s;
+  }
+
+  /* Noise — stronger on dark (Designity-style film grain) */
+  .bg-grain {
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.09'/%3E%3C/svg%3E");
+  }
+
+  .bg-grain-strong {
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.14'/%3E%3C/svg%3E");
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-hero-up {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
+
+@layer components {
+  .nav-link {
+    @apply text-[0.9375rem] font-medium text-muted-foreground transition-colors duration-200 hover:text-foreground;
+  }
+  .nav-link-on-dark {
+    @apply text-[0.9375rem] font-medium text-white/65 transition-colors duration-200 hover:text-white;
+  }
+  .nav-link:focus-visible,
+  .nav-link-on-dark:focus-visible {
+    @apply rounded-md outline-none ring-2 ring-primary ring-offset-2;
+  }
+  .nav-link-on-dark:focus-visible {
+    @apply ring-offset-[var(--void)];
+  }
+}
+
+@layer components {
+  .container-site {
+    @apply mx-auto w-full max-w-7xl px-6;
+  }
+
+  .content-intro {
+    @apply mx-auto w-full max-w-[40rem] text-center lg:max-w-[44rem];
+  }
+
+  .content-pricing {
+    @apply mx-auto w-full max-w-4xl;
+  }
+
+  .section-sm {
+    @apply py-16 md:py-24 lg:py-28;
+  }
+
+  /* Hero on void — oversized, tight leading */
+  .text-display-hero {
+    @apply font-display font-bold tracking-[-0.045em] text-balance text-white;
+    font-size: clamp(2.5rem, 0.5rem + 7vw, 4.25rem);
+    line-height: 0.98;
+  }
+
+  .text-display {
+    @apply font-display font-bold tracking-[-0.04em] text-balance text-foreground;
+    font-size: clamp(2.1rem, 0.75rem + 4vw, 3.25rem);
+    line-height: 1.05;
+  }
+
+  .text-h1 {
+    @apply font-display text-3xl font-bold tracking-[-0.035em] sm:text-4xl md:text-5xl;
+    line-height: 1.05;
+  }
+
+  .text-h2 {
+    @apply font-display text-2xl font-bold tracking-[-0.03em] sm:text-3xl md:text-[2.125rem];
+    line-height: 1.1;
+  }
+
+  .text-h3 {
+    @apply font-display text-lg font-semibold sm:text-xl;
+    line-height: 1.35;
+  }
+
+  .text-label {
+    @apply font-display text-[0.7rem] font-semibold tracking-[0.28em] text-primary uppercase;
+  }
+
+  .text-label-on-dark {
+    @apply font-display text-[0.7rem] font-semibold tracking-[0.28em] text-white/50 uppercase;
+  }
+
+  .text-body-lg {
+    @apply text-base leading-relaxed sm:text-lg;
+  }
+
+  .text-body-muted {
+    @apply text-base leading-relaxed text-muted-foreground;
+  }
+
+  .section-muted {
+    @apply bg-zinc-100/90;
+  }
+
+  .surface {
+    @apply rounded-xl border border-border/90 bg-card shadow-sm;
+  }
+
+  .surface-raised {
+    @apply rounded-xl border border-white/10 bg-white/5 shadow-2xl shadow-black/40;
+  }
+
+  .surface-brand {
+    @apply rounded-2xl border border-primary/30 bg-gradient-to-br from-primary/[0.08] via-white to-zinc-50 shadow-[0_24px_64px_-32px_rgba(255,77,18,0.45)];
+  }
+
+  .surface-hoverable {
+    @apply transition-[transform,box-shadow] duration-300 hover:-translate-y-0.5 hover:shadow-lg;
+  }
+}
