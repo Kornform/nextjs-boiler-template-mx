@@ -5,7 +5,10 @@
       "Bash(npm install:*)",
       "Bash(npx shadcn@latest init --defaults)",
       "Bash(npx tsc:*)",
-      "Bash(npm run:*)"
+      "Bash(npm run:*)",
+      "Bash(gh repo:*)",
+      "Bash(shopt -s dotglob)",
+      "Bash(mv \"D:/MAX/__projects__/nextjs-boiler-template-by-claude/linguai/\"* \"D:/MAX/__projects__/nextjs-boiler-template-by-claude/\")"
     ]
   }
 }
