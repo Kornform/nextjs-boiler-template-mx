@@ -1,32 +1,44 @@
-import { Brain, Search, Shield } from "lucide-react";
+import { Zap, SlidersHorizontal, RefreshCw, BookOpen, Layers, LayoutGrid } from "lucide-react";
 
-import {
-  Card,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
 import { RevealOnScroll } from "@/components/ui/reveal-on-scroll";
 import { cn } from "@/lib/utils";
 
-const items = [
+const benefits = [
   {
-    icon: Brain,
-    title: "Context-Aware AI",
+    icon: Zap,
+    title: "Faster publishing cycles",
     description:
-      "It doesn't just translate words; it understands the context of your niche to maintain your brand's unique tone.",
+      "Generate initial translation drafts faster than manual briefing or vendor turnaround. Content updates move from writing to multilingual publishing in a fraction of the time.",
   },
   {
-    icon: Shield,
-    title: "Builder Safe",
+    icon: SlidersHorizontal,
+    title: "Less repetitive translation work",
     description:
-      "Safely ignores WordPress shortcodes and page builder tags (Elementor, Divi) so your layouts never break.",
+      "Reduce the manual effort of re-translating recurring content, repetitive page structures, and standard UI strings. The workflow handles the routine work so your team can focus on quality.",
   },
   {
-    icon: Search,
-    title: "SEO Optimized",
+    icon: BookOpen,
+    title: "Shared glossary and context",
     description:
-      "Automatically translates permalinks, alt tags, and Yoast metadata so you rank natively in every language.",
+      "Maintain consistent terminology across your entire site. Define key terms and brand language once — the glossary is applied automatically across all translation runs.",
+  },
+  {
+    icon: SlidersHorizontal,
+    title: "Full editorial review control",
+    description:
+      "Every translation is a draft until you approve it. Review and edit in WPML's native translation editor. Nothing goes live without your sign-off. Automation assists — it doesn't replace judgment.",
+  },
+  {
+    icon: Layers,
+    title: "Native WPML integration",
+    description:
+      "LinguAI maps directly to your WPML language structure, translation workflows, and string types. No external platforms. No rebuilding your setup. It fits the process you already have.",
+  },
+  {
+    icon: RefreshCw,
+    title: "Scales with your content volume",
+    description:
+      "Whether you're managing one multilingual site or twenty, the workflow scales without proportionally scaling the effort. Batch translation handles large content sets efficiently.",
   },
 ] as const;
 
@@ -34,45 +46,39 @@ export function FeaturesSection() {
   return (
     <section
       id="features"
-      className="section-sm scroll-mt-24 border-y border-border/50 bg-white"
+      className="scroll-mt-24 border-y border-border/50 bg-white py-20 md:py-28 lg:py-32"
     >
       <div className="container-site">
-        <RevealOnScroll className="text-center">
-          <h2 className="text-h2 mb-4 text-foreground">Built for performance.</h2>
-          <p className="text-body-muted mx-auto mb-14 max-w-2xl">
-            Everything you need to launch a multilingual WordPress site without
-            breaking your layouts or your budget.
+        <RevealOnScroll className="mb-14 md:mb-16">
+          <p className="text-label mb-5">Benefits</p>
+          <h2 className="text-display max-w-2xl">
+            Concrete reasons to make the switch.
+          </h2>
+          <p className="text-body-muted mt-5 max-w-xl">
+            Not feature labels — actual workflow improvements that reduce effort and increase publishing speed.
           </p>
         </RevealOnScroll>
 
-        <div className="grid gap-6 text-left md:grid-cols-3 md:gap-7">
-          {items.map((item, i) => (
-            <RevealOnScroll key={item.title} delayMs={i * 70}>
-              <Card
+        <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3 md:gap-6">
+          {benefits.map((item, i) => (
+            <RevealOnScroll key={item.title} delayMs={i * 60}>
+              <div
                 className={cn(
-                  "group h-full rounded-2xl border-border/70 bg-card/90 p-0 shadow-sm ring-1 ring-border/40",
-                  "transition-[transform,box-shadow] duration-300",
-                  "hover:-translate-y-1 hover:shadow-[0_22px_48px_-28px_rgba(12,18,34,0.28)]"
+                  "group h-full rounded-xl border border-border/70 bg-card p-7",
+                  "transition-[transform,box-shadow,border-color] duration-300",
+                  "hover:-translate-y-0.5 hover:border-primary/25 hover:shadow-[0_18px_48px_-24px_rgba(12,18,34,0.2)]"
                 )}
               >
-                <CardHeader className="space-y-5 p-8">
-                  <div className="flex size-12 items-center justify-center rounded-xl bg-primary/10 text-primary ring-1 ring-primary/20 transition-colors group-hover:bg-primary/15">
-                    <item.icon
-                      className="size-6"
-                      strokeWidth={1.65}
-                      aria-hidden
-                    />
-                  </div>
-                  <div className="space-y-3">
-                    <CardTitle className="font-display text-xl font-bold text-foreground">
-                      {item.title}
-                    </CardTitle>
-                    <CardDescription className="text-[0.9375rem] leading-relaxed text-muted-foreground">
-                      {item.description}
-                    </CardDescription>
-                  </div>
-                </CardHeader>
-              </Card>
+                <div className="mb-5 flex size-10 items-center justify-center rounded-lg bg-primary/8 text-primary ring-1 ring-primary/15 transition-colors group-hover:bg-primary/12">
+                  <item.icon className="size-5" strokeWidth={1.75} aria-hidden />
+                </div>
+                <h3 className="font-display text-base font-bold text-foreground mb-2.5">
+                  {item.title}
+                </h3>
+                <p className="text-[0.875rem] leading-relaxed text-muted-foreground">
+                  {item.description}
+                </p>
+              </div>
             </RevealOnScroll>
           ))}
         </div>

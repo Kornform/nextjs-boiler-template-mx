@@ -55,6 +55,7 @@
 :root {
   --void: #0a0a0a;
   --ink: #0a0a0a;
+  --deep: #111112;
 
   /* Cool grey page canvas */
   --background:             #ececee;
@@ -131,27 +132,36 @@
   }
 }
 
+@keyframes bar-grow {
+  from { width: 0; }
+  to { width: var(--bar-w, 100%); }
+}
+
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.35; }
+}
+
 @layer utilities {
   .animate-hero-up {
     animation: hero-fade-up 0.85s cubic-bezier(0.22, 1, 0.36, 1) both;
   }
-  .hero-delay-1 {
-    animation-delay: 0.04s;
-  }
-  .hero-delay-2 {
-    animation-delay: 0.1s;
-  }
-  .hero-delay-3 {
-    animation-delay: 0.16s;
-  }
-  .hero-delay-4 {
-    animation-delay: 0.22s;
-  }
-  .hero-delay-5 {
-    animation-delay: 0.28s;
+  .hero-delay-1 { animation-delay: 0.04s; }
+  .hero-delay-2 { animation-delay: 0.1s; }
+  .hero-delay-3 { animation-delay: 0.16s; }
+  .hero-delay-4 { animation-delay: 0.22s; }
+  .hero-delay-5 { animation-delay: 0.28s; }
+
+  .animate-bar-grow {
+    animation: bar-grow 1.4s cubic-bezier(0.22, 1, 0.36, 1) both;
+    animation-delay: 0.6s;
   }
 
-  /* Noise — stronger on dark (Designity-style film grain) */
+  .animate-pulse-dot {
+    animation: pulse-dot 2s ease-in-out infinite;
+  }
+
+  /* Noise — stronger on dark (film grain) */
   .bg-grain {
     background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.09'/%3E%3C/svg%3E");
   }
@@ -166,6 +176,10 @@
     animation: none !important;
     opacity: 1 !important;
     transform: none !important;
+  }
+  .animate-bar-grow {
+    animation: none !important;
+    width: var(--bar-w, 100%) !important;
   }
 }
 
@@ -215,6 +229,12 @@
     line-height: 1.05;
   }
 
+  .text-display-on-dark {
+    @apply font-display font-bold tracking-[-0.04em] text-balance text-white;
+    font-size: clamp(2.1rem, 0.75rem + 4vw, 3.25rem);
+    line-height: 1.05;
+  }
+
   .text-h1 {
     @apply font-display text-3xl font-bold tracking-[-0.035em] sm:text-4xl md:text-5xl;
     line-height: 1.05;
@@ -236,6 +256,10 @@
 
   .text-label-on-dark {
     @apply font-display text-[0.7rem] font-semibold tracking-[0.28em] text-white/50 uppercase;
+  }
+
+  .text-label-muted {
+    @apply font-display text-[0.7rem] font-semibold tracking-[0.28em] text-muted-foreground uppercase;
   }
 
   .text-body-lg {
@@ -264,5 +288,10 @@
 
   .surface-hoverable {
     @apply transition-[transform,box-shadow] duration-300 hover:-translate-y-0.5 hover:shadow-lg;
+  }
+
+  /* Section divider line */
+  .section-rule {
+    @apply h-px w-full bg-border/60;
   }
 }

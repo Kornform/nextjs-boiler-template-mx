@@ -1,84 +1,99 @@
-import { X } from "lucide-react";
+import { X, Check } from "lucide-react";
 
 import { RevealOnScroll } from "@/components/ui/reveal-on-scroll";
-import { cn } from "@/lib/utils";
 
 const oldWay = [
-  "Exporting and importing endless XLIFF files.",
-  "Waiting days or weeks for manual translations.",
-  "High per-word costs that drain your budget.",
+  "Export strings to spreadsheet or XLIFF file",
+  "Brief a translator or send to a translation vendor",
+  "Wait days — sometimes weeks — for turnaround",
+  "Import back into WPML and fix formatting issues",
+  "Review each language in a separate workflow",
+  "Repeat every time your content changes",
 ] as const;
 
 const newWay = [
-  "One-click bulk translations directly inside WordPress.",
-  "Entire sites translated in minutes, not weeks.",
-  "Fixed, predictable pricing that scales with you.",
+  "Select content inside WPML — no export needed",
+  "Generate AI translation drafts in minutes",
+  "Review and refine in WPML's native editor",
+  "Shared glossary keeps terminology consistent",
+  "Batch jobs process multiple pages at once",
+  "Same workflow handles every subsequent update",
 ] as const;
 
 export function ComparisonSection() {
   return (
-    <section className="relative overflow-hidden bg-white py-24">
-      <div
-        className="pointer-events-none absolute -left-32 top-24 size-[28rem] rounded-full bg-primary/10 blur-3xl"
-        aria-hidden
-      />
-      <div className="container-site relative">
-        <RevealOnScroll className="mx-auto mb-14 max-w-3xl text-center md:mx-0 md:text-left">
-          <h2 className="text-h2 mb-4 text-balance text-foreground">
+    <section className="section-muted py-20 md:py-28 lg:py-32">
+      <div className="container-site">
+        <RevealOnScroll className="mb-14 md:mb-16">
+          <p className="text-label mb-5">Old vs. new</p>
+          <h2 className="text-display max-w-2xl">
             Translating shouldn&apos;t be a bottleneck.
           </h2>
-          <p className="text-body-muted mx-auto max-w-xl md:mx-0">
-            Same WPML setup — a different pace. Pick the path that matches how you
-            ship.
+          <p className="text-body-muted mt-5 max-w-lg">
+            Same WPML setup. Dramatically different pace. The workflow is the difference.
           </p>
         </RevealOnScroll>
 
-        <div className="grid gap-6 md:grid-cols-2 md:items-start md:gap-8 lg:gap-10">
+        <div className="grid gap-5 md:grid-cols-2 md:gap-6">
+          {/* Old way */}
           <RevealOnScroll delayMs={0}>
-            <div
-              className={cn(
-                "rounded-2xl border border-border/80 bg-stone-100/90 p-9 md:mt-10 md:p-10",
-                "shadow-[inset_0_1px_0_rgb(255_255_255_/_0.6)]"
-              )}
-            >
-              <h3 className="font-display mb-6 text-xl font-bold text-muted-foreground">
-                The Old Way
-              </h3>
-              <ul className="space-y-4 text-muted-foreground">
+            <div className="h-full rounded-2xl border border-zinc-200/80 bg-zinc-50/90 p-8 md:p-10">
+              <div className="mb-7 flex items-center gap-3">
+                <span className="rounded-full bg-zinc-200/80 px-3 py-1 font-display text-xs font-bold tracking-wide text-zinc-400 uppercase">
+                  Manual workflow
+                </span>
+              </div>
+              <ul className="space-y-4">
                 {oldWay.map((line) => (
                   <li key={line} className="flex items-start gap-3">
                     <span
-                      className="mt-0.5 flex size-6 shrink-0 items-center justify-center rounded-full bg-red-500/15 text-red-600"
+                      className="mt-0.5 flex size-5 shrink-0 items-center justify-center rounded-full bg-zinc-200/90 text-zinc-400"
                       aria-hidden
                     >
-                      <X className="size-3.5 stroke-[3]" />
+                      <X className="size-3 stroke-[2.5]" />
                     </span>
-                    <span>{line}</span>
+                    <span className="text-[0.9375rem] leading-snug text-zinc-500">
+                      {line}
+                    </span>
                   </li>
                 ))}
               </ul>
+              <div className="mt-8 border-t border-zinc-200/80 pt-6">
+                <p className="text-sm font-semibold text-zinc-400">
+                  Result: slow cycles, high coordination overhead, and a process that doesn&apos;t scale.
+                </p>
+              </div>
             </div>
           </RevealOnScroll>
 
+          {/* New way */}
           <RevealOnScroll delayMs={90}>
-            <div className="surface-brand relative p-9 md:-translate-y-2 md:p-10 lg:-translate-y-4">
-              <div
-                className="absolute -left-1 top-8 hidden h-24 w-1 rounded-full bg-primary md:block"
-                aria-hidden
-              />
-              <h3 className="font-display mb-6 text-xl font-bold text-primary">
-                The WPML AI Way
-              </h3>
-              <ul className="space-y-4 font-medium text-foreground">
+            <div className="h-full rounded-2xl border border-primary/25 bg-white p-8 shadow-[0_20px_60px_-32px_rgba(255,77,18,0.3)] md:p-10">
+              <div className="mb-7 flex items-center gap-3">
+                <span className="rounded-full bg-primary/10 px-3 py-1 font-display text-xs font-bold tracking-wide text-primary uppercase">
+                  LinguAI for WPML
+                </span>
+              </div>
+              <ul className="space-y-4">
                 {newWay.map((line) => (
                   <li key={line} className="flex items-start gap-3">
-                    <span className="text-lg text-primary" aria-hidden>
-                      ✓
+                    <span
+                      className="mt-0.5 flex size-5 shrink-0 items-center justify-center rounded-full bg-primary/10 text-primary"
+                      aria-hidden
+                    >
+                      <Check className="size-3 stroke-[2.5]" />
                     </span>
-                    <span>{line}</span>
+                    <span className="text-[0.9375rem] leading-snug font-medium text-foreground">
+                      {line}
+                    </span>
                   </li>
                 ))}
               </ul>
+              <div className="mt-8 border-t border-primary/15 pt-6">
+                <p className="text-sm font-semibold text-foreground/75">
+                  Result: faster publishing, less manual overhead, a workflow that scales with your content.
+                </p>
+              </div>
             </div>
           </RevealOnScroll>
         </div>
