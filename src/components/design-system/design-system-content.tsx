@@ -103,17 +103,17 @@ import { siteConfig } from "@/config/site";
 import { cn } from "@/lib/utils";
 
 const toc = [
-  { id: "farben", label: "Farben", icon: Palette },
-  { id: "typografie", label: "Typografie", icon: Type },
+  { id: "colors", label: "Colors", icon: Palette },
+  { id: "typography", label: "Typography", icon: Type },
   { id: "radius", label: "Radius", icon: Box },
-  { id: "oberflaechen", label: "Oberflächen", icon: Layers },
+  { id: "surfaces", label: "Surfaces", icon: Layers },
   { id: "buttons", label: "Buttons", icon: MousePointer2 },
-  { id: "formular", label: "Formular", icon: FormInput },
+  { id: "form", label: "Form", icon: FormInput },
   { id: "feedback", label: "Feedback", icon: MessageSquare },
-  { id: "akkordeon", label: "Akkordeon", icon: ChevronsUpDown },
-  { id: "layout", label: "Layout & Daten", icon: LayoutGrid },
+  { id: "accordion", label: "Accordion", icon: ChevronsUpDown },
+  { id: "layout", label: "Layout & Data", icon: LayoutGrid },
   { id: "overlays", label: "Overlays", icon: Sparkles },
-  { id: "animationen", label: "Animationen", icon: Zap },
+  { id: "animations", label: "Animations", icon: Zap },
 ] as const;
 
 type ButtonVariantName = NonNullable<
@@ -121,13 +121,13 @@ type ButtonVariantName = NonNullable<
 >;
 
 const BUTTON_VARIANT_ROWS: { code: string; variant?: ButtonVariantName }[] = [
-  { code: "default — Astro .btn--primary (Mint, 2px)" },
-  { code: "cta — Astro .btn--cta", variant: "cta" },
-  { code: "outline — Astro .btn--secondary (Rand, Hover invert)", variant: "outline" },
-  { code: "secondary — Slate-Fläche", variant: "secondary" },
+  { code: "default — mint fill, 2px border" },
+  { code: "cta — white fill", variant: "cta" },
+  { code: "outline — border, hover invert", variant: "outline" },
+  { code: "secondary — slate surface", variant: "secondary" },
   { code: "ghost", variant: "ghost" },
   { code: "link", variant: "link" },
-  { code: "destructive — nur Kontur (kein roter Block)", variant: "destructive" },
+  { code: "destructive — outline only, no red block", variant: "destructive" },
 ];
 
 const BUTTON_SIZE_ROWS: {
@@ -225,14 +225,14 @@ export function DesignSystemContent() {
           <p className="text-label mb-2">{siteConfig.name}</p>
           <h1 className="text-h1 text-balance">Design system</h1>
           <p className="text-body-muted mt-3 max-w-2xl">
-            Theme abgeleitet vom Astro-Boilerplate: Slate-Dunkelgrund, Mint/CTA
-            als <code className="font-mono text-sm">primary</code>, Inter + Cal
-            Sans + JetBrains Mono (+ Noto Serif Georgian als{" "}
+            Theme derived from the Astro boilerplate: slate-950 canvas, Mint/CTA
+            as <code className="font-mono text-sm">primary</code>, Inter + Cal
+            Sans + JetBrains Mono (+ Noto Serif Georgian as{" "}
             <code className="font-mono text-sm">font-quote</code>
-            ). Semantik wie shadcn (
+            ). Semantics follow shadcn (
             <code className="font-mono text-sm">background</code>,{" "}
-            <code className="font-mono text-sm">card</code>, …) — Komponenten
-            bleiben kompatibel. Build: statischer Export nach{" "}
+            <code className="font-mono text-sm">card</code>, …) — components
+            stay compatible. Build: static export to{" "}
             <code className="font-mono text-sm">out/</code>.
           </p>
         </div>
@@ -241,10 +241,10 @@ export function DesignSystemContent() {
       <div className="grid gap-10 lg:grid-cols-[220px_1fr] lg:gap-16">
         <nav
           className="lg:sticky lg:top-24 lg:self-start"
-          aria-label="Abschnitte"
+          aria-label="Sections"
         >
           <p className="text-label text-muted-foreground mb-3 hidden lg:block">
-            Inhalt
+            Contents
           </p>
           <ul className="flex flex-wrap gap-2 lg:flex-col lg:gap-1">
             {toc.map((item) => (
@@ -262,15 +262,15 @@ export function DesignSystemContent() {
         </nav>
 
         <div className="flex min-w-0 flex-col gap-16">
-          {/* Farben */}
-          <section className="space-y-6" aria-labelledby="farben-heading">
+          {/* Colors */}
+          <section className="space-y-6" aria-labelledby="colors-heading">
             <SectionTitle
-              id="farben"
-              title="Farben"
-              description="Slate + Mint aus astro-boilerplate. Außenrahmen per 1px-Padding + Rahmenfarbe; Token border: eigener Rahmen-Ton und Trennlinie zum Text, damit Streifen und Rand nicht verschmelzen."
+              id="colors"
+              title="Colors"
+              description="Slate + Mint from the Astro boilerplate. Outer border via 1px padding + border color; the border token uses its own shade so the swatch stripe and the card edge never merge."
             />
-            <h3 id="farben-heading" className="sr-only">
-              Farbpalette
+            <h3 id="colors-heading" className="sr-only">
+              Color palette
             </h3>
             <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
               {colorRows.map((row) => (
@@ -315,39 +315,39 @@ export function DesignSystemContent() {
 
           <Separator />
 
-          {/* Typografie */}
-          <section className="space-y-6" aria-labelledby="typografie-heading">
+          {/* Typography */}
+          <section className="space-y-6" aria-labelledby="typography-heading">
             <SectionTitle
-              id="typografie"
-              title="Typografie"
-              description="Display: Cal Sans; UI: Inter; Mono: JetBrains Mono; Zitate: font-quote. Skala in globals.css: H1/display mit clamp, H2/H3 jetzt ebenfalls fluid (--type-h2/--type-h3); Fließtext 1rem, body-muted und body-lg minimal mit Viewport gestuft."
+              id="typography"
+              title="Typography"
+              description="Display: Cal Sans; UI: Inter; Mono: JetBrains Mono; Quotes: font-quote. Scale in globals.css: H1/display with clamp, H2/H3 also fluid (--type-h2/--type-h3); body 1rem, body-muted and body-lg slightly viewport-stepped."
             />
-            <h3 id="typografie-heading" className="sr-only">
-              Textstile
+            <h3 id="typography-heading" className="sr-only">
+              Text styles
             </h3>
             <Card>
               <CardHeader>
-                <CardTitle>Skala</CardTitle>
+                <CardTitle>Scale</CardTitle>
                 <CardDescription>
-                  Klassen in <code className="font-mono text-xs">globals.css</code>{" "}
-                  (@layer components); Größen gesteuert über{" "}
-                  <code className="font-mono text-xs">--type-*</code> wo angegeben.
+                  Classes in <code className="font-mono text-xs">globals.css</code>{" "}
+                  (@layer components); sizes driven by{" "}
+                  <code className="font-mono text-xs">--type-*</code> variables where noted.
                 </CardDescription>
               </CardHeader>
               <CardContent className="space-y-6">
                 <p className="text-display">text-display</p>
-                <p className="text-h1">text-h1 — Überschrift erste Ebene</p>
-                <p className="text-h2">text-h2 — Sektionstitel</p>
-                <p className="text-h3">text-h3 — Karten- und Listenüberschriften</p>
-                <p className="text-label text-primary">text-label — Label / Eyebrow</p>
+                <p className="text-h1">text-h1 — first-level heading</p>
+                <p className="text-h2">text-h2 — section title</p>
+                <p className="text-h3">text-h3 — card and list headings</p>
+                <p className="text-label text-primary">text-label — label / eyebrow</p>
                 <p className="text-body-lg">
-                  text-body-lg — Einleitung und längere Absätze mit erhöhter Lesbarkeit.
+                  text-body-lg — introductions and longer paragraphs with increased readability.
                 </p>
                 <p className="text-body-muted">
-                  text-body-muted — sekundärer Fließtext und Hilfetexte.
+                  text-body-muted — secondary body copy and helper text.
                 </p>
                 <p className="font-quote text-sm italic text-muted-foreground">
-                  font-quote — Noto Serif Georgian (für Pullquotes / Akzente).
+                  font-quote — Noto Serif Georgian (for pull-quotes / accents).
                 </p>
                 <p className="font-mono text-sm">
                   font-mono — JetBrains Mono Variable.
@@ -362,8 +362,8 @@ export function DesignSystemContent() {
           <section className="space-y-6">
             <SectionTitle
               id="radius"
-              title="Eckenradius"
-              description="Basis --radius (0.625rem); Skala wie in shadcn-Docs (sm … 4xl), plus rounded-xs."
+              title="Border Radius"
+              description="Base --radius (0.625rem); scale follows the shadcn docs (sm … 4xl), plus rounded-xs."
             />
             <div className="flex flex-wrap gap-4">
               {(
@@ -393,48 +393,47 @@ export function DesignSystemContent() {
 
           <Separator />
 
-          {/* Oberflächen — astro abstracts_surface.scss */}
+          {/* Surfaces */}
           <section className="space-y-6">
             <SectionTitle
-              id="oberflaechen"
-              title="Oberflächen"
-              description="Gleiche Surface-Typen wie im Astro-Referenzprojekt (abstracts_surface.scss): primary, primary2, accent, secondary, solid, gradient-slate. Optional .surface-hoverable für Rand/Schatten-Hover ohne Bewegung. .surface ist ein Alias für .surface-primary."
+              id="surfaces"
+              title="Surfaces"
+              description="Same surface types as the Astro reference project (abstracts_surface.scss): primary, primary2, accent, secondary, solid, gradient-slate. Add .surface-hoverable for border/shadow hover without movement. .surface is an alias for .surface-primary."
             />
             <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
               <div className="surface-primary surface-hoverable p-6">
                 <p className="font-mono text-xs text-muted-foreground">.surface-primary</p>
-                <p className="mt-1 font-medium">Standard-Gradient</p>
+                <p className="mt-1 font-medium">Default gradient</p>
                 <p className="text-body-muted mt-1 text-sm">
-                  Slate-800-Verlauf, dezenter heller Rand.
+                  Slate-800 gradient, subtle light border.
                 </p>
               </div>
               <div className="surface-primary2 surface-hoverable p-6">
                 <p className="font-mono text-xs text-muted-foreground">.surface-primary2</p>
-                <p className="mt-1 font-medium">Flach + slate-700-Rand</p>
+                <p className="mt-1 font-medium">Flat + slate-700 border</p>
                 <p className="text-body-muted mt-1 text-sm">
-                  bg-slate-800/30; Hover hebt Rand auf slate-500 und die Fläche leicht
-                  an.
+                  bg-slate-800/30; hover lifts border to slate-500 and slightly brightens the surface.
                 </p>
               </div>
               <div className="surface-accent surface-hoverable p-6">
                 <p className="font-mono text-xs text-muted-foreground">.surface-accent</p>
-                <p className="mt-1 font-medium">CTA-Rahmen</p>
+                <p className="mt-1 font-medium">CTA border</p>
                 <p className="text-body-muted mt-1 text-sm">
-                  Mint-Gradient + CTA-Border (Hervorhebung).
+                  Mint gradient + CTA border for highlighted elements.
                 </p>
               </div>
               <div className="surface-secondary surface-hoverable p-6">
                 <p className="font-mono text-xs text-muted-foreground">.surface-secondary</p>
-                <p className="mt-1 font-medium">Slate-700-Ebene</p>
+                <p className="mt-1 font-medium">Slate-700 layer</p>
                 <p className="text-body-muted mt-1 text-sm">
-                  Etwas heller; Hover verstärkt Gradient + Rand.
+                  Slightly lighter; hover strengthens gradient + border.
                 </p>
               </div>
-              <div className="surface-solid p-6">
+              <div className="surface-solid surface-hoverable p-6">
                 <p className="font-mono text-xs text-muted-foreground">.surface-solid</p>
-                <p className="mt-1 font-medium">Ohne Hover-Pattern</p>
+                <p className="mt-1 font-medium">Opaque surface</p>
                 <p className="text-body-muted mt-1 text-sm">
-                  Volle slate-800-Fläche, statische Karten.
+                  Full slate-800 fill; hover lifts to slate-700.
                 </p>
               </div>
               <div className="surface-gradient-slate surface-hoverable p-6">
@@ -443,7 +442,7 @@ export function DesignSystemContent() {
                 </p>
                 <p className="mt-1 font-medium">800 → 900</p>
                 <p className="text-body-muted mt-1 text-sm">
-                  Diagonal-Gradient, Rand slate-700 → Hover slate-600.
+                  Diagonal gradient, slate-700 border → hover slate-600.
                 </p>
               </div>
             </div>
@@ -451,20 +450,20 @@ export function DesignSystemContent() {
 
           <Separator />
 
-          {/* Buttons — Astro component_buttons + shadcn/CVA-API */}
+          {/* Buttons */}
           <section className="space-y-6">
             <SectionTitle
               id="buttons"
               title="Buttons"
-              description="An Astro (Mint-Primary, heller CTA, Outline mit weißem Rand auf dunklem UI). Immer cursor-pointer / disabled:cursor-not-allowed. CVA-Varianten weiterhin kompatibel zu shadcn; destructive nur als dezente Kontur. Base UI Button; Links: buttonVariants + Next Link."
+              description="Aligned with Astro (mint primary, light CTA, outline with white border on dark UI). Always cursor-pointer / disabled:cursor-not-allowed. CVA variants remain shadcn-compatible; destructive is outline-only. Base UI Button; links: buttonVariants + Next Link."
             />
             <div className="flex flex-col gap-6">
               <Card>
                 <CardHeader>
-                  <CardTitle>Varianten</CardTitle>
+                  <CardTitle>Variants</CardTitle>
                   <CardDescription>
-                    Prop <code className="font-mono text-xs">variant</code> — je
-                    Zeile: aktiv und{" "}
+                    Prop <code className="font-mono text-xs">variant</code> — each
+                    row: active and{" "}
                     <code className="font-mono text-xs">disabled</code>.
                   </CardDescription>
                 </CardHeader>
@@ -485,9 +484,9 @@ export function DesignSystemContent() {
 
               <Card>
                 <CardHeader>
-                  <CardTitle>Größen (Text)</CardTitle>
+                  <CardTitle>Sizes (text)</CardTitle>
                   <CardDescription>
-                    Prop <code className="font-mono text-xs">size</code> bei{" "}
+                    Prop <code className="font-mono text-xs">size</code> with{" "}
                     <code className="font-mono text-xs">variant=&quot;default&quot;</code>
                     .
                   </CardDescription>
@@ -506,17 +505,17 @@ export function DesignSystemContent() {
 
               <Card>
                 <CardHeader>
-                  <CardTitle>Icon-Buttons</CardTitle>
+                  <CardTitle>Icon buttons</CardTitle>
                   <CardDescription>
-                    Größen <code className="font-mono text-xs">icon-xs</code> bis{" "}
-                    <code className="font-mono text-xs">icon-lg</code> — immer{" "}
-                    <code className="font-mono text-xs">aria-label</code> setzen.
+                    Sizes <code className="font-mono text-xs">icon-xs</code> to{" "}
+                    <code className="font-mono text-xs">icon-lg</code> — always
+                    provide <code className="font-mono text-xs">aria-label</code>.
                   </CardDescription>
                 </CardHeader>
                 <CardContent className="pt-0">
                   {BUTTON_ICON_SIZE_ROWS.map((row) => (
                     <ButtonSpecimenRow key={row.code} code={row.code}>
-                      <Button size={row.size} aria-label="Hinzufügen">
+                      <Button size={row.size} aria-label="Add">
                         <Plus className="size-4" />
                       </Button>
                     </ButtonSpecimenRow>
@@ -526,25 +525,25 @@ export function DesignSystemContent() {
 
               <Card>
                 <CardHeader>
-                  <CardTitle>Icons + Text</CardTitle>
+                  <CardTitle>Icons + text</CardTitle>
                   <CardDescription>
-                    Abstand für End-Icons:{" "}
+                    Spacing for end icons via{" "}
                     <code className="font-mono text-xs">data-icon=&quot;inline-end&quot;</code>{" "}
-                    (siehe{" "}
+                    (see{" "}
                     <code className="font-mono text-xs">buttonVariants</code>).
                   </CardDescription>
                 </CardHeader>
                 <CardContent className="flex flex-wrap gap-3 pt-0">
                   <Button variant="default">
                     <Mail className="size-4" data-icon="inline-start" />
-                    E-Mail
+                    Email
                   </Button>
                   <Button variant="cta">
-                    Loslegen
+                    Get started
                     <ChevronRight className="size-4" data-icon="inline-end" />
                   </Button>
                   <Button variant="outline">
-                    Sekundär
+                    Secondary
                     <ChevronRight className="size-4" data-icon="inline-end" />
                   </Button>
                   <Button variant="secondary" disabled>
@@ -552,27 +551,27 @@ export function DesignSystemContent() {
                       className="size-4 animate-spin"
                       data-icon="inline-start"
                     />
-                    Wird geladen…
+                    Loading…
                   </Button>
                 </CardContent>
               </Card>
 
               <Card>
                 <CardHeader>
-                  <CardTitle>Kombinationen</CardTitle>
+                  <CardTitle>Combinations</CardTitle>
                   <CardDescription>
-                    Häufige Mischungen aus Variant und Size.
+                    Common pairings of variant and size.
                   </CardDescription>
                 </CardHeader>
                 <CardContent className="flex flex-wrap gap-3 pt-0">
                   <Button variant="default" size="lg">
-                    Primary groß
+                    Primary large
                   </Button>
                   <Button variant="cta" size="sm">
-                    CTA klein
+                    CTA small
                   </Button>
                   <Button variant="outline" size="lg">
-                    Outline groß
+                    Outline large
                   </Button>
                   <Button variant="ghost" size="xs">
                     Ghost xs
@@ -581,7 +580,7 @@ export function DesignSystemContent() {
                     <Info className="size-3.5" />
                   </Button>
                   <Button variant="destructive" size="sm">
-                    Nur Kontur
+                    Outline only
                   </Button>
                 </CardContent>
               </Card>
@@ -590,13 +589,13 @@ export function DesignSystemContent() {
                 <CardHeader>
                   <CardTitle>Navigation (Server Components)</CardTitle>
                   <CardDescription>
-                    Kein <code className="font-mono text-xs">{"<Button>"}</code>{" "}
-                    nötig:{" "}
-                    <code className="font-mono text-xs">buttonVariants</code> aus{" "}
+                    No <code className="font-mono text-xs">{"<Button>"}</code>{" "}
+                    needed:{" "}
+                    <code className="font-mono text-xs">buttonVariants</code> from{" "}
                     <code className="font-mono text-xs">
                       @/components/ui/button-variants
                     </code>{" "}
-                    auf <code className="font-mono text-xs">Link</code>.
+                    applied to <code className="font-mono text-xs">Link</code>.
                   </CardDescription>
                 </CardHeader>
                 <CardContent className="flex flex-wrap gap-3 pt-0">
@@ -604,37 +603,37 @@ export function DesignSystemContent() {
                     href="/about"
                     className={buttonVariants({ variant: "default" })}
                   >
-                    Primär-Link
+                    Primary link
                   </Link>
                   <Link
                     href="/about"
                     className={buttonVariants({ variant: "cta", size: "sm" })}
                   >
-                    CTA-Link
+                    CTA link
                   </Link>
                   <Link
                     href="/"
                     className={buttonVariants({ variant: "outline", size: "sm" })}
                   >
-                    Outline-Link
+                    Outline link
                   </Link>
                 </CardContent>
               </Card>
 
               <Card>
                 <CardHeader>
-                  <CardTitle>Fehlerzustand</CardTitle>
+                  <CardTitle>Error state</CardTitle>
                   <CardDescription>
-                    <code className="font-mono text-xs">aria-invalid</code> — nur
-                    Randfarbe / Fläche (kein Mint-Ring, kein Rot+Grün-Mix).
+                    <code className="font-mono text-xs">aria-invalid</code> — border
+                    color only (no mint ring, no red+green mix).
                   </CardDescription>
                 </CardHeader>
                 <CardContent className="flex flex-wrap gap-3 pt-0">
                   <Button variant="outline" aria-invalid>
-                    Ungültig
+                    Invalid
                   </Button>
                   <Button variant="default" aria-invalid>
-                    Ungültig
+                    Invalid
                   </Button>
                 </CardContent>
               </Card>
@@ -643,40 +642,40 @@ export function DesignSystemContent() {
 
           <Separator />
 
-          {/* Formular */}
+          {/* Form */}
           <section className="space-y-6">
             <SectionTitle
-              id="formular"
-              title="Formular"
-              description="Eingaben, Auswahl und Schalter — konsistent fokussierbar."
+              id="form"
+              title="Form"
+              description="Inputs, selects and toggles — consistently focusable."
             />
             <Card className="max-w-md">
               <CardHeader>
-                <CardTitle>Beispielformular</CardTitle>
-                <CardDescription>Demonstration gängiger Felder</CardDescription>
+                <CardTitle>Example form</CardTitle>
+                <CardDescription>Demonstration of common fields</CardDescription>
               </CardHeader>
               <CardContent className="space-y-4">
                 <div className="space-y-2">
-                  <Label htmlFor="ds-name">Projektname</Label>
-                  <Input id="ds-name" placeholder="z. B. Mehrsprachiger Blog" />
+                  <Label htmlFor="ds-name">Project name</Label>
+                  <Input id="ds-name" placeholder="e.g. Multilingual blog" />
                 </div>
                 <div className="space-y-2">
-                  <Label htmlFor="ds-notes">Notizen</Label>
+                  <Label htmlFor="ds-notes">Notes</Label>
                   <Textarea
                     id="ds-notes"
-                    placeholder="Terminologie, Zielgruppe …"
+                    placeholder="Terminology, target audience…"
                     rows={3}
                   />
                 </div>
                 <div className="space-y-2">
-                  <Label htmlFor="ds-lang">Zielsprache</Label>
-                  <Select defaultValue="de">
+                  <Label htmlFor="ds-lang">Target language</Label>
+                  <Select defaultValue="en">
                     <SelectTrigger id="ds-lang" className="w-full">
                       <SelectValue />
                     </SelectTrigger>
                     <SelectContent>
-                      <SelectItem value="de">Deutsch</SelectItem>
                       <SelectItem value="en">English</SelectItem>
+                      <SelectItem value="de">Deutsch</SelectItem>
                       <SelectItem value="fr">Français</SelectItem>
                     </SelectContent>
                   </Select>
@@ -684,12 +683,12 @@ export function DesignSystemContent() {
                 <div className="flex items-center gap-2">
                   <Checkbox id="ds-terms" defaultChecked />
                   <Label htmlFor="ds-terms" className="font-normal">
-                    Qualitätsregeln aktivieren
+                    Enable quality rules
                   </Label>
                 </div>
                 <div className="flex items-center justify-between gap-4">
                   <Label htmlFor="ds-auto" className="font-normal">
-                    Auto-Übersetzung
+                    Auto-translate
                   </Label>
                   <Switch id="ds-auto" defaultChecked />
                 </div>
@@ -704,21 +703,21 @@ export function DesignSystemContent() {
             <SectionTitle
               id="feedback"
               title="Feedback"
-              description="Hinweise, Status und kompakte Labels."
+              description="Notifications, status indicators and compact labels."
             />
             <div className="space-y-4">
               <Alert>
                 <Info className="size-4" />
-                <AlertTitle>Hinweis</AlertTitle>
+                <AlertTitle>Note</AlertTitle>
                 <AlertDescription>
-                  neutrale Alert-Komponente für nicht-blockierende Meldungen.
+                  Neutral alert component for non-blocking messages.
                 </AlertDescription>
               </Alert>
               <Alert variant="destructive">
                 <AlertCircle className="size-4" />
-                <AlertTitle>Fehler</AlertTitle>
+                <AlertTitle>Error</AlertTitle>
                 <AlertDescription>
-                  destructive — für Validierung oder fehlgeschlagene Aktionen.
+                  Destructive — for validation errors or failed actions.
                 </AlertDescription>
               </Alert>
               <div className="flex flex-wrap gap-2">
@@ -733,12 +732,12 @@ export function DesignSystemContent() {
 
           <Separator />
 
-          {/* Akkordeon */}
+          {/* Accordion */}
           <section className="space-y-6">
             <SectionTitle
-              id="akkordeon"
-              title="Akkordeon"
-              description="Volle Zeile klickbar; immer nur ein Panel offen (multiple ist im Wrapper deaktiviert). Hover nur muted-Fläche, ein Chevron mit Rotation."
+              id="accordion"
+              title="Accordion"
+              description="Full row clickable; only one panel open at a time (multiple disabled in wrapper). Hover shows muted surface only, single chevron rotates."
             />
             <Accordion
               defaultValue={["ds-1"]}
@@ -746,27 +745,26 @@ export function DesignSystemContent() {
             >
               <AccordionItem value="ds-1">
                 <AccordionTrigger className="text-[15px]">
-                  Erstes Panel
+                  First panel
                 </AccordionTrigger>
                 <AccordionContent>
-                  Ideal für Hilfetexte, Unterpunkte oder optionale Detailinfos — ohne
-                  die Seite zu überladen.
+                  Ideal for help text, sub-items or optional details — without cluttering the page.
                 </AccordionContent>
               </AccordionItem>
               <AccordionItem value="ds-2">
                 <AccordionTrigger className="text-[15px]">
-                  Zweites Panel
+                  Second panel
                 </AccordionTrigger>
                 <AccordionContent>
-                  Öffnet ein anderes Panel — das vorherige schließt automatisch.
+                  Opening another panel closes the previous one automatically.
                 </AccordionContent>
               </AccordionItem>
               <AccordionItem value="ds-3">
                 <AccordionTrigger className="text-[15px]">
-                  Drittes Panel
+                  Third panel
                 </AccordionTrigger>
                 <AccordionContent>
-                  Fokus nur über Hintergrund, kein Rand-„Sprung“; Chevron dreht sich.
+                  Focus indicated by background only, no border jump; chevron rotates.
                 </AccordionContent>
               </AccordionItem>
             </Accordion>
@@ -774,23 +772,23 @@ export function DesignSystemContent() {
 
           <Separator />
 
-          {/* Layout */}
+          {/* Layout & Data */}
           <section className="flex flex-col gap-6">
             <SectionTitle
               id="layout"
-              title="Layout & Daten"
-              description="Karten, Tabs, Avatar — typische Muster für Inhalte."
+              title="Layout & Data"
+              description="Cards, tabs, avatars — typical patterns for structured content."
             />
-            <Tabs defaultValue="eins" className="w-full max-w-lg">
+            <Tabs defaultValue="one" className="w-full max-w-lg">
               <TabsList>
-                <TabsTrigger value="eins">Erster Tab</TabsTrigger>
-                <TabsTrigger value="zwei">Zweiter Tab</TabsTrigger>
+                <TabsTrigger value="one">First tab</TabsTrigger>
+                <TabsTrigger value="two">Second tab</TabsTrigger>
               </TabsList>
-              <TabsContent value="eins" className="text-muted-foreground mt-3">
-                Inhalt für Registerkarte eins.
+              <TabsContent value="one" className="text-muted-foreground mt-3">
+                Content for tab one.
               </TabsContent>
-              <TabsContent value="zwei" className="text-muted-foreground mt-3">
-                Inhalt für Registerkarte zwei.
+              <TabsContent value="two" className="text-muted-foreground mt-3">
+                Content for tab two.
               </TabsContent>
             </Tabs>
 
@@ -804,8 +802,8 @@ export function DesignSystemContent() {
                 <AvatarFallback className="text-lg">CD</AvatarFallback>
               </Avatar>
               <div className="text-body-muted text-sm">
-                <span className="text-foreground font-medium">Avatar</span> mit
-                Fallback-Initialen, wenn kein Bild gesetzt ist.
+                <span className="text-foreground font-medium">Avatar</span> with
+                fallback initials when no image is set.
               </div>
             </div>
 
@@ -813,15 +811,15 @@ export function DesignSystemContent() {
 
             <Card className="max-w-md">
               <CardHeader>
-                <CardTitle>Kartenlayout</CardTitle>
+                <CardTitle>Card layout</CardTitle>
                 <CardDescription>
-                  CardHeader + CardContent für strukturierte Datenblöcke.
+                  CardHeader + CardContent for structured data blocks.
                 </CardDescription>
               </CardHeader>
               <CardContent>
                 <p className="text-sm">
-                  Standardmuster für strukturierte Inhalte; längere ausklappbare Texte
-                  eignen sich für das Akkordeon.
+                  Standard pattern for structured content; longer collapsible text
+                  works well in the accordion.
                 </p>
               </CardContent>
             </Card>
@@ -833,18 +831,18 @@ export function DesignSystemContent() {
             <SectionTitle
               id="overlays"
               title="Overlays & Feedback"
-              description="Dialog, Sheet, Menü, Popover, Tooltip und Skeleton — typische Bausteine; Tooltips laufen über TooltipProvider im Root-Layout."
+              description="Dialog, Sheet, Menu, Popover, Tooltip and Skeleton — common building blocks; Tooltips run via TooltipProvider in the root layout."
             />
             <h3 id="overlays-heading" className="sr-only">
-              Overlay-Komponenten
+              Overlay components
             </h3>
 
             <Card>
               <CardHeader>
                 <CardTitle>Dialog & Sheet</CardTitle>
                 <CardDescription>
-                  Modal (fokussiert) und seitliches Panel — z. B. Bestätigungen oder
-                  mobile Navigation.
+                  Modal (focused) and side panel — e.g. confirmations or mobile
+                  navigation.
                 </CardDescription>
               </CardHeader>
               <CardContent className="flex flex-wrap gap-3">
@@ -856,10 +854,9 @@ export function DesignSystemContent() {
                   </DialogTrigger>
                   <DialogContent>
                     <DialogHeader>
-                      <DialogTitle>Beispiel-Dialog</DialogTitle>
+                      <DialogTitle>Example dialog</DialogTitle>
                       <DialogDescription>
-                        Schließen über X oder Esc. Fokus wird ins Fenster
-                        übernommen.
+                        Close via X or Esc. Focus is trapped inside the dialog.
                       </DialogDescription>
                     </DialogHeader>
                   </DialogContent>
@@ -873,9 +870,9 @@ export function DesignSystemContent() {
                   </SheetTrigger>
                   <SheetContent side="right" className="flex w-full flex-col sm:max-w-sm">
                     <SheetHeader>
-                      <SheetTitle>Seitenpanel</SheetTitle>
+                      <SheetTitle>Side panel</SheetTitle>
                       <SheetDescription>
-                        Nutzbar für Filter, Warenkorb oder sekundäre Aktionen.
+                        Useful for filters, cart or secondary actions.
                       </SheetDescription>
                     </SheetHeader>
                   </SheetContent>
@@ -885,10 +882,10 @@ export function DesignSystemContent() {
 
             <Card>
               <CardHeader>
-                <CardTitle>Menü, Popover, Tooltip</CardTitle>
+                <CardTitle>Menu, Popover, Tooltip</CardTitle>
                 <CardDescription>
-                  Anker an nativen Triggern (kein Button-in-Button); gleiche
-                  buttonVariants-Klassen wie überall.
+                  Anchored to native triggers (no button-in-button); same
+                  buttonVariants classes as everywhere else.
                 </CardDescription>
               </CardHeader>
               <CardContent className="flex flex-wrap gap-3">
@@ -899,10 +896,10 @@ export function DesignSystemContent() {
                     Dropdown
                   </DropdownMenuTrigger>
                   <DropdownMenuContent>
-                    <DropdownMenuLabel>Aktionen</DropdownMenuLabel>
+                    <DropdownMenuLabel>Actions</DropdownMenuLabel>
                     <DropdownMenuSeparator />
-                    <DropdownMenuItem>Erste Option</DropdownMenuItem>
-                    <DropdownMenuItem>Zweite Option</DropdownMenuItem>
+                    <DropdownMenuItem>First option</DropdownMenuItem>
+                    <DropdownMenuItem>Second option</DropdownMenuItem>
                   </DropdownMenuContent>
                 </DropdownMenu>
 
@@ -914,7 +911,7 @@ export function DesignSystemContent() {
                   </PopoverTrigger>
                   <PopoverContent>
                     <p className="text-muted-foreground text-sm">
-                      Kontext ohne die Seite zu verlassen.
+                      Contextual content without leaving the page.
                     </p>
                   </PopoverContent>
                 </Popover>
@@ -926,7 +923,7 @@ export function DesignSystemContent() {
                     Tooltip
                   </TooltipTrigger>
                   <TooltipContent>
-                    <p>Kurzer Hilfetext beim Hover oder Fokus.</p>
+                    <p>Short help text on hover or focus.</p>
                   </TooltipContent>
                 </Tooltip>
               </CardContent>
@@ -936,7 +933,7 @@ export function DesignSystemContent() {
               <CardHeader>
                 <CardTitle>Skeleton</CardTitle>
                 <CardDescription>
-                  Platzhalter für Listen und Karten während Inhalte laden.
+                  Placeholder for lists and cards while content is loading.
                 </CardDescription>
               </CardHeader>
               <CardContent className="space-y-3">
@@ -953,12 +950,12 @@ export function DesignSystemContent() {
 
           <Separator />
 
-          {/* Animationen */}
+          {/* Animations */}
           <section className="space-y-6">
             <SectionTitle
-              id="animationen"
-              title="Animationen & Texteffekte"
-              description="Fertige Utility-Klassen aus globals.css: Shimmer für Lade-Skeletons, Float für schwebende Elemente, Pulse für Statuspunkte, Textgradienten."
+              id="animations"
+              title="Animations & Text effects"
+              description="Ready-to-use utility classes from globals.css: shimmer for loading skeletons, float for hovering elements, pulse for status dots, text gradients."
             />
 
             <Card>
@@ -966,8 +963,8 @@ export function DesignSystemContent() {
                 <CardTitle>Shimmer</CardTitle>
                 <CardDescription>
                   <code className="font-mono text-xs">.animate-shimmer</code> —
-                  Ladeindikator mit CSS-Gradientlauf; ersetzt einfache
-                  Grauflächen.
+                  Loading indicator with a CSS gradient sweep; replaces plain grey
+                  placeholders.
                 </CardDescription>
               </CardHeader>
               <CardContent className="space-y-3">
@@ -986,10 +983,10 @@ export function DesignSystemContent() {
               <CardHeader>
                 <CardTitle>Float & Pulse</CardTitle>
                 <CardDescription>
-                  <code className="font-mono text-xs">.animate-float</code> für
-                  schwebende Dekorelemente,{" "}
+                  <code className="font-mono text-xs">.animate-float</code> for
+                  hovering decorative elements,{" "}
                   <code className="font-mono text-xs">.animate-pulse-dot</code>{" "}
-                  für Live-Statuspunkte.
+                  for live status indicators.
                 </CardDescription>
               </CardHeader>
               <CardContent>
@@ -1003,7 +1000,7 @@ export function DesignSystemContent() {
                       aria-hidden
                     />
                     <span className="text-sm text-muted-foreground">
-                      Live-Status
+                      Live status
                     </span>
                   </div>
                 </div>
@@ -1012,17 +1009,17 @@ export function DesignSystemContent() {
 
             <Card>
               <CardHeader>
-                <CardTitle>Textgradienten</CardTitle>
+                <CardTitle>Text gradients</CardTitle>
                 <CardDescription>
                   <code className="font-mono text-xs">.text-gradient-accent</code>{" "}
-                  (Cyan → Sky) und{" "}
+                  (Cyan → Sky) and{" "}
                   <code className="font-mono text-xs">.text-gradient-primary</code>{" "}
-                  (Mint → Mint-dunkel).
+                  (Mint → Mint dark).
                 </CardDescription>
               </CardHeader>
               <CardContent className="space-y-3">
                 <p className="text-gradient-accent text-h2">
-                  Gradient Accent — Cyan zu Sky
+                  Gradient Accent — Cyan to Sky
                 </p>
                 <p className="text-gradient-primary text-h2">
                   Gradient Primary — Mint

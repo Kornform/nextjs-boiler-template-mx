@@ -45,10 +45,10 @@ export const siteConfig = {
   url: resolveSiteUrl(),
 
   nav: [
-    { label: "Designsystem", href: "/" },
-    { label: "Farben", href: "/#farben" },
-    { label: "Typografie", href: "/#typografie" },
-    { label: "Über", href: "/about" },
+    { label: "Design system", href: "/" },
+    { label: "Colors", href: "/#colors" },
+    { label: "Typography", href: "/#typography" },
+    { label: "About", href: "/about" },
   ] satisfies NavItem[],
 
   /** Minimal footer links — replace repository href when you publish. */
@@ -63,9 +63,9 @@ export const siteConfig = {
   ] satisfies NavItem[],
 
   cta: {
-    primary: { label: "Zu Typografie", href: "/#typografie" },
-    secondary: { label: "Formular", href: "/#formular" },
-    nav: { label: "Farben", href: "/#farben" },
+    primary: { label: "Typography", href: "/#typography" },
+    secondary: { label: "Form", href: "/#form" },
+    nav: { label: "Colors", href: "/#colors" },
   },
 
   links: {
