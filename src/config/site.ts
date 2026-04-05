@@ -57,7 +57,7 @@ export const siteConfig = {
     { label: "About", href: "/about" },
     {
       label: "GitHub",
-      href: "https://github.com",
+      href: "https://github.com/Kornform/nextjs-boiler-template-mx",
       external: true,
     },
   ] satisfies NavItem[],

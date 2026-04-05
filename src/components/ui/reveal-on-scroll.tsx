@@ -9,12 +9,27 @@ type RevealOnScrollProps = {
   className?: string;
   /** Stagger siblings by passing 0, 80, 160… */
   delayMs?: number;
+  /**
+   * IntersectionObserver threshold (0–1). Higher values require more of the
+   * element to be visible before triggering. Default: 0.1
+   */
+  threshold?: number;
+  /**
+   * IntersectionObserver rootMargin. Negative bottom values trigger earlier
+   * (before the element fully enters the viewport). Default: "0px 0px -6% 0px"
+   */
+  rootMargin?: string;
+  /** Wrapper element tag. Default: "div" */
+  as?: React.ElementType;
 };
 
 export function RevealOnScroll({
   children,
   className,
   delayMs = 0,
+  threshold = 0.1,
+  rootMargin = "0px 0px -6% 0px",
+  as: Tag = "div",
 }: RevealOnScrollProps) {
   const ref = useRef<HTMLDivElement>(null);
   const [visible, setVisible] = useState(false);
@@ -30,14 +45,14 @@ export function RevealOnScroll({
           obs.disconnect();
         }
       },
-      { threshold: 0.1, rootMargin: "0px 0px -6% 0px" }
+      { threshold, rootMargin }
     );
     obs.observe(el);
     return () => obs.disconnect();
-  }, []);
+  }, [threshold, rootMargin]);
 
   return (
-    <div
+    <Tag
       ref={ref}
       style={{ transitionDelay: `${delayMs}ms` }}
       className={cn(
@@ -49,6 +64,6 @@ export function RevealOnScroll({
       )}
     >
       {children}
-    </div>
+    </Tag>
   );
 }

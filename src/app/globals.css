@@ -237,6 +237,25 @@ html.light {
   }
 }
 
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
 @layer utilities {
   .animate-hero-up {
     animation: hero-fade-up 0.85s cubic-bezier(0.22, 1, 0.36, 1) both;
@@ -266,6 +285,21 @@ html.light {
     animation: pulse-dot 2s ease-in-out infinite;
   }
 
+  .animate-shimmer {
+    background: linear-gradient(
+      90deg,
+      rgb(var(--slate-800)) 25%,
+      rgb(var(--slate-700)) 50%,
+      rgb(var(--slate-800)) 75%
+    );
+    background-size: 200% 100%;
+    animation: shimmer 2s ease-in-out infinite;
+  }
+
+  .animate-float {
+    animation: float 4s ease-in-out infinite;
+  }
+
   .bg-grain {
     background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.09'/%3E%3C/svg%3E");
   }
@@ -285,6 +319,18 @@ html.light {
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
   }
+
+  /* Mint-only gradient — subtler than accent, good for headings */
+  .text-gradient-primary {
+    background: linear-gradient(
+      135deg,
+      rgb(var(--mint-400)) 0%,
+      rgb(var(--mint-600)) 100%
+    );
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -296,6 +342,14 @@ html.light {
   .animate-bar-grow {
     animation: none !important;
     width: var(--bar-w, 100%) !important;
+  }
+  .animate-shimmer {
+    animation: none !important;
+    background: rgb(var(--slate-800)) !important;
+  }
+  .animate-float {
+    animation: none !important;
+    transform: none !important;
   }
   .skip-link {
     transition: none;
@@ -309,11 +363,7 @@ html.light {
   .nav-link {
     @apply text-[0.9375rem] font-medium text-muted-foreground transition-colors duration-200 hover:text-foreground;
   }
-  .nav-link-on-dark {
-    @apply text-[0.9375rem] font-medium text-muted-foreground transition-colors duration-200 hover:text-foreground;
-  }
-  .nav-link:focus-visible,
-  .nav-link-on-dark:focus-visible {
+  .nav-link:focus-visible {
     @apply rounded-md outline-none ring-2 ring-ring ring-offset-2 ring-offset-background;
   }
 
@@ -366,12 +416,6 @@ html.light {
   }
 
   .text-display {
-    @apply font-display font-bold tracking-tight text-balance text-foreground;
-    font-size: var(--type-display);
-    line-height: var(--leading-display);
-  }
-
-  .text-display-on-dark {
     @apply font-display font-bold tracking-tight text-balance text-foreground;
     font-size: var(--type-display);
     line-height: var(--leading-display);
@@ -530,6 +574,13 @@ html.light {
     border: 1px solid rgb(255 255 255 / 0.05);
     box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1),
       0 2px 4px -2px rgb(0 0 0 / 0.06);
+  }
+
+  .surface-solid.surface-hoverable:hover {
+    border-color: rgb(255 255 255 / 0.1);
+    background: rgb(var(--slate-700) / 0.95);
+    box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1),
+      0 10px 10px -5px rgb(0 0 0 / 0.04);
   }
 
   .surface-gradient-slate {

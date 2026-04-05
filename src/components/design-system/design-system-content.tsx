@@ -20,6 +20,7 @@ import {
   Mail,
   Loader2,
   Plus,
+  Zap,
 } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
@@ -112,6 +113,7 @@ const toc = [
   { id: "akkordeon", label: "Akkordeon", icon: ChevronsUpDown },
   { id: "layout", label: "Layout & Daten", icon: LayoutGrid },
   { id: "overlays", label: "Overlays", icon: Sparkles },
+  { id: "animationen", label: "Animationen", icon: Zap },
 ] as const;
 
 type ButtonVariantName = NonNullable<
@@ -945,6 +947,86 @@ export function DesignSystemContent() {
                     <Skeleton className="h-3 w-full" />
                   </div>
                 </div>
+              </CardContent>
+            </Card>
+          </section>
+
+          <Separator />
+
+          {/* Animationen */}
+          <section className="space-y-6">
+            <SectionTitle
+              id="animationen"
+              title="Animationen & Texteffekte"
+              description="Fertige Utility-Klassen aus globals.css: Shimmer für Lade-Skeletons, Float für schwebende Elemente, Pulse für Statuspunkte, Textgradienten."
+            />
+
+            <Card>
+              <CardHeader>
+                <CardTitle>Shimmer</CardTitle>
+                <CardDescription>
+                  <code className="font-mono text-xs">.animate-shimmer</code> —
+                  Ladeindikator mit CSS-Gradientlauf; ersetzt einfache
+                  Grauflächen.
+                </CardDescription>
+              </CardHeader>
+              <CardContent className="space-y-3">
+                <div className="flex items-center gap-3">
+                  <div className="animate-shimmer size-10 shrink-0 rounded-full" />
+                  <div className="flex min-w-0 flex-1 flex-col gap-2">
+                    <div className="animate-shimmer h-3 w-2/3 max-w-[12rem] rounded-full" />
+                    <div className="animate-shimmer h-3 w-full rounded-full" />
+                  </div>
+                </div>
+                <div className="animate-shimmer h-24 w-full rounded-xl" />
+              </CardContent>
+            </Card>
+
+            <Card>
+              <CardHeader>
+                <CardTitle>Float & Pulse</CardTitle>
+                <CardDescription>
+                  <code className="font-mono text-xs">.animate-float</code> für
+                  schwebende Dekorelemente,{" "}
+                  <code className="font-mono text-xs">.animate-pulse-dot</code>{" "}
+                  für Live-Statuspunkte.
+                </CardDescription>
+              </CardHeader>
+              <CardContent>
+                <div className="flex flex-wrap items-center gap-8">
+                  <div className="animate-float surface-accent flex size-16 items-center justify-center rounded-2xl">
+                    <Sparkles className="size-6 text-primary" />
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <span
+                      className="animate-pulse-dot size-2 rounded-full bg-primary"
+                      aria-hidden
+                    />
+                    <span className="text-sm text-muted-foreground">
+                      Live-Status
+                    </span>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+
+            <Card>
+              <CardHeader>
+                <CardTitle>Textgradienten</CardTitle>
+                <CardDescription>
+                  <code className="font-mono text-xs">.text-gradient-accent</code>{" "}
+                  (Cyan → Sky) und{" "}
+                  <code className="font-mono text-xs">.text-gradient-primary</code>{" "}
+                  (Mint → Mint-dunkel).
+                </CardDescription>
+              </CardHeader>
+              <CardContent className="space-y-3">
+                <p className="text-gradient-accent text-h2">
+                  Gradient Accent — Cyan zu Sky
+                </p>
+                <p className="text-gradient-primary text-h2">
+                  Gradient Primary — Mint
+                </p>
               </CardContent>
             </Card>
           </section>
