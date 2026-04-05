@@ -1,0 +1,97 @@
+/*
+  Theme: Light Sand
+  ─────────────────
+  Warm off-white canvas with an amber/terracotta CTA accent.
+  A complete alternative to the default dark-mint theme.
+
+  To activate: in globals.css replace
+    @import "./themes/dark-mint.css";
+  with
+    @import "./themes/light-sand.css";
+
+  Also set themeColor in src/app/layout.tsx to a light value,
+  e.g. themeColor: "#FAF7F2"
+*/
+
+:root {
+  /* ── Raw palette — warm sand scale ── */
+  --sand-50:  250 247 242;
+  --sand-100: 244 239 231;
+  --sand-200: 232 225 213;
+  --sand-300: 210 200 185;
+  --sand-400: 175 162 143;
+  --sand-500: 140 125 104;
+  --sand-600: 105 90 70;
+  --sand-700: 75 60 45;
+  --sand-800: 50 38 26;
+  --sand-900: 30 22 14;
+  --sand-950: 15 10 6;
+
+  /* ── Raw palette — amber accent ── */
+  --amber-300: 252 211 77;
+  --amber-400: 251 191 36;
+  --amber-500: 245 158 11;
+  --amber-600: 217 119 6;
+  --amber-700: 180 83 9;
+
+  --cta:       180 83 9;
+  --cta-hover: 217 119 6;
+
+  /* These map to the gradient utilities in globals.css */
+  --cyan-400: 217 119 6;  /* remapped to amber for light theme */
+  --sky-400:  251 191 36; /* remapped to warm gold */
+
+  /* ── Semantic tokens (shadcn-compatible) ── */
+  --radius: 0.5rem;
+
+  --background:           rgb(var(--sand-50));
+  --foreground:           rgb(var(--sand-900));
+  --card:                 rgb(255 255 255);
+  --card-foreground:      rgb(var(--sand-900));
+  --popover:              rgb(255 255 255);
+  --popover-foreground:   rgb(var(--sand-900));
+  --primary:              rgb(var(--amber-700));
+  --primary-foreground:   rgb(255 255 255);
+  --secondary:            rgb(var(--sand-200));
+  --secondary-foreground: rgb(var(--sand-900));
+  --muted:                rgb(var(--sand-100));
+  --muted-foreground:     rgb(var(--sand-600));
+  --accent:               rgb(var(--sand-200));
+  --accent-foreground:    rgb(var(--sand-900));
+  --destructive:          rgb(220 38 38);
+  --destructive-foreground: rgb(255 255 255);
+  --border:               rgb(var(--sand-300));
+  --input:                rgb(var(--sand-300));
+  --ring:                 rgb(var(--amber-700));
+
+  --chart-1: rgb(var(--amber-700));
+  --chart-2: rgb(var(--amber-500));
+  --chart-3: rgb(var(--amber-400));
+  --chart-4: rgb(var(--amber-600));
+  --chart-5: rgb(146 64 14); /* amber-800 */
+
+  --sidebar:                    rgb(var(--sand-100));
+  --sidebar-foreground:         rgb(var(--sand-900));
+  --sidebar-primary:            rgb(var(--amber-700));
+  --sidebar-primary-foreground: rgb(255 255 255);
+  --sidebar-accent:             rgb(var(--sand-200));
+  --sidebar-accent-foreground:  rgb(var(--sand-900));
+  --sidebar-border:             rgb(var(--sand-300));
+  --sidebar-ring:               rgb(var(--amber-700));
+
+  /* ── Type scale — identical to dark-mint ── */
+  --type-display-hero: clamp(2.25rem, 0.75rem + 6vw, 3.5rem);
+  --type-display:      clamp(2rem, 0.65rem + 4.5vw, 2.75rem);
+  --type-h1-max:       3rem;
+  --type-h2:           clamp(1.625rem, 1.15rem + 1.75vw, 2.25rem);
+  --type-h3:           clamp(1.375rem, 1.05rem + 1.15vw, 1.875rem);
+  --type-body:         1rem;
+  --type-body-lg:      clamp(1.0625rem, 1rem + 0.2vw, 1.1875rem);
+  --type-body-muted:   clamp(1rem, 0.97rem + 0.12vw, 1.0625rem);
+  --type-label:        0.7rem;
+
+  --leading-display-hero: 1.05;
+  --leading-display:      1.1;
+  --leading-body:         1.55;
+  --leading-snug:         1.35;
+}

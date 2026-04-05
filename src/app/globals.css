@@ -9,12 +9,13 @@
 @import "shadcn/tailwind.css";
 
 /*
-  Theme derived from D:/MAX/__projects__/astro-boilerplate:
-  - Slate neutrals + mint/CTA accent (RGB triplets + semantic tokens).
-  - Dark-first layout (slate-950 canvas) like base_base + cards.
-  - Typography: Inter Variable (sans), Cal Sans (display), JetBrains Mono Variable, Noto Serif Georgian (quote).
-  shadcn components keep working via mapped semantic colors.
+  Active theme — swap this single import to redesign everything at once.
+  Available themes (src/app/themes/):
+    dark-mint   — slate-950 canvas + mint CTA (default)
+    light-sand  — warm off-white + amber CTA
+  To create your own: copy any theme file and override the CSS variables.
 */
+@import "./themes/dark-mint.css";
 
 @custom-variant dark (&:is(.dark *));
 
@@ -70,117 +71,7 @@
   --radius-full: 9999px;
 }
 
-/* RGB triplets (space-separated) — same values as astro abstracts_variables.scss */
-:root {
-  --slate-50: 248 250 252;
-  --slate-100: 241 245 249;
-  --slate-200: 226 232 240;
-  --slate-300: 203 213 225;
-  --slate-400: 148 163 184;
-  --slate-500: 100 116 139;
-  --slate-600: 71 85 105;
-  --slate-700: 51 65 85;
-  --slate-800: 30 41 59;
-  --slate-900: 15 23 42;
-  --slate-950: 2 6 23;
-
-  --mint-400: 128 255 225;
-  --mint-500: 100 255 218;
-  --mint-600: 26 255 200;
-  --mint-700: 0 230 175;
-
-  --cta: 100 255 218;
-  --cta-hover: 68 230 192;
-
-  --cyan-400: 34 211 238;
-  --sky-400: 56 189 248;
-
-  /* shadcn semantic — dark slate + mint CTA (astro) */
-  --radius: 0.625rem;
-
-  --background: rgb(var(--slate-950));
-  --foreground: rgb(var(--slate-50));
-  --card: rgb(var(--slate-900));
-  --card-foreground: rgb(var(--slate-50));
-  --popover: rgb(var(--slate-900));
-  --popover-foreground: rgb(var(--slate-50));
-  --primary: rgb(var(--mint-500));
-  --primary-foreground: rgb(var(--slate-950));
-  --secondary: rgb(var(--slate-800));
-  --secondary-foreground: rgb(var(--slate-50));
-  --muted: rgb(var(--slate-800));
-  /* Etwas heller als slate-400: besser lesbar auf slate-950 */
-  --muted-foreground: rgb(var(--slate-300));
-  --accent: rgb(var(--slate-800));
-  --accent-foreground: rgb(var(--slate-50));
-  --destructive: rgb(220 38 38);
-  --destructive-foreground: rgb(255 255 255);
-  /* slate-600: klarer sichtbar gegen 950 (Seite) und 900 (Karten) */
-  --border: rgb(var(--slate-600));
-  --input: rgb(var(--slate-600));
-  --ring: rgb(var(--mint-500));
-
-  --chart-1: rgb(var(--mint-500));
-  --chart-2: rgb(var(--cyan-400));
-  --chart-3: rgb(var(--sky-400));
-  --chart-4: rgb(var(--mint-400));
-  --chart-5: rgb(var(--mint-700));
-
-  --sidebar: rgb(var(--slate-900));
-  --sidebar-foreground: rgb(var(--slate-50));
-  --sidebar-primary: rgb(var(--mint-500));
-  --sidebar-primary-foreground: rgb(var(--slate-950));
-  --sidebar-accent: rgb(var(--slate-800));
-  --sidebar-accent-foreground: rgb(var(--slate-50));
-  --sidebar-border: rgb(var(--slate-600));
-  --sidebar-ring: rgb(var(--mint-500));
-
-  /*
-    Type scale (rem) — 16px-Root; fluid wo Lesbarkeit vom Viewport profitiert.
-    Ordnung: label < body ≈ body-muted ≤ body-lg < h3 < h2 < h1 ≤ display < display-hero
-    (h1 max 3rem bleibt unter display-hero max 3.5rem).
-  */
-  --type-display-hero: clamp(2.25rem, 0.75rem + 6vw, 3.5rem);
-  --type-display: clamp(2rem, 0.65rem + 4.5vw, 2.75rem);
-  --type-h1-max: 3rem;
-  --type-h2: clamp(1.625rem, 1.15rem + 1.75vw, 2.25rem);
-  --type-h3: clamp(1.375rem, 1.05rem + 1.15vw, 1.875rem);
-  --type-body: 1rem;
-  --type-body-lg: clamp(1.0625rem, 1rem + 0.2vw, 1.1875rem);
-  /* Sekundärfließtext: leicht größer als body, gleiches clamp-Prinzip wie body-lg */
-  --type-body-muted: clamp(1rem, 0.97rem + 0.12vw, 1.0625rem);
-  --type-label: 0.7rem;
-  --leading-display-hero: 1.05;
-  --leading-display: 1.1;
-  --leading-body: 1.55;
-  --leading-snug: 1.35;
-}
-
-/* Light surfaces if you add html.light or similar later */
-.light,
-html.light {
-  --background: rgb(var(--slate-50));
-  --foreground: rgb(var(--slate-900));
-  --card: rgb(255 255 255);
-  --card-foreground: rgb(var(--slate-900));
-  --popover: rgb(255 255 255);
-  --popover-foreground: rgb(var(--slate-900));
-  --primary: rgb(0 128 97);
-  --primary-foreground: rgb(255 255 255);
-  --secondary: rgb(var(--slate-200));
-  --secondary-foreground: rgb(var(--slate-900));
-  --muted: rgb(var(--slate-100));
-  --muted-foreground: rgb(var(--slate-600));
-  --accent: rgb(var(--slate-100));
-  --accent-foreground: rgb(var(--slate-900));
-  --border: rgb(var(--slate-200));
-  --input: rgb(var(--slate-200));
-  --ring: rgb(var(--mint-600));
-}
-
-.dark {
-  /* Same as default :root — placeholder for next-themes toggle */
-}
+/* Theme variables are defined in src/app/themes/ and imported above. */
 
 @utility font-quote {
   font-family: var(--font-quote);

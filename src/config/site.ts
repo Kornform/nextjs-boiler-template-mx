@@ -34,20 +34,20 @@ export const siteConfig = {
 
   tagline: "Next.js + tokens + UI primitives — ready for real projects.",
 
-  /** Kept for optional marketing sections under `src/components/sections/`. */
-  heroEyebrow: "Example eyebrow",
-  heroTitle: "Example hero headline — dark slate + mint accent (astro-derived).",
-  heroRating: "Optional supporting line",
+  /** Used by the example HeroSection in src/components/sections/. Replace with your own copy. */
+  heroEyebrow: "Next.js boilerplate",
+  heroTitle: "Your next project starts here.",
+  heroRating: "Built with shadcn/ui · Tailwind CSS 4 · static export",
 
   description:
-    "Semantic color tokens, fluid typography, and shadcn-style components on Next.js App Router. Replace copy and tokens when you ship.",
+    "Semantic color tokens, fluid typography, and shadcn-style components on Next.js App Router. Swap the theme file and start building — no configuration needed.",
 
   url: resolveSiteUrl(),
 
   nav: [
-    { label: "Design system", href: "/" },
-    { label: "Colors", href: "/#colors" },
-    { label: "Typography", href: "/#typography" },
+    { label: "Design system", href: "/design-system" },
+    { label: "Colors", href: "/design-system#colors" },
+    { label: "Typography", href: "/design-system#typography" },
     { label: "About", href: "/about" },
   ] satisfies NavItem[],
 
@@ -63,9 +63,9 @@ export const siteConfig = {
   ] satisfies NavItem[],
 
   cta: {
-    primary: { label: "Typography", href: "/#typography" },
-    secondary: { label: "Form", href: "/#form" },
-    nav: { label: "Colors", href: "/#colors" },
+    primary: { label: "View design system", href: "/design-system" },
+    secondary: { label: "Get started", href: "/about" },
+    nav: { label: "Design system", href: "/design-system" },
   },
 
   links: {
